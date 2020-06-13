@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { Row, Col } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { } from '@fortawesome/fontawesome-free-solid';
 
 import contentData from "../utils/contentData";
 

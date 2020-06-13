@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 
-import Hero from "../components/Hero";
-import Content from "../components/Content";
+import Welcome from '../components/Welcome';
+import Content from '../components/Content';
 
 const Home = () => (
   <Fragment>
-    <Hero />
+    <Welcome />
     <hr />
     <Content />
   </Fragment>
