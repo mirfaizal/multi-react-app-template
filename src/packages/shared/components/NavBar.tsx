@@ -37,13 +37,30 @@ const NavBar = () => {
           <NavbarBrand className='logo' />
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav className='mr-auto' navbar>
-              <NavItem>
-                <NavLink tag={RouterNavLink} to='/' exact activeClassName='router-link-exact-active'>
-                  Home
-                </NavLink>
-              </NavItem>
-            </Nav>
+            {isAuthenticated && (
+              <Nav className='mr-auto' navbar>
+                <NavItem>
+                  <NavLink tag={RouterNavLink} to='/' exact activeClassName='router-link-exact-active'>
+                    Home
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RouterNavLink} to='/student' exact activeClassName='router-link-exact-active'>
+                    Student
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RouterNavLink} to='/teacher' exact activeClassName='router-link-exact-active'>
+                    Teacher
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RouterNavLink} to='/admin' exact activeClassName='router-link-exact-active'>
+                    Admin
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            )}
             <Nav className='d-none d-md-block' navbar>
               {!isAuthenticated && (
                 <NavItem>

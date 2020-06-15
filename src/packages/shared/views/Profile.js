@@ -7,6 +7,7 @@ import { useAuth0 } from "../../../react-auth0-spa";
 const Profile = () => {
   const { loading, user } = useAuth0();
 
+  console.log(JSON.stringify(user));
   if (loading || !user) {
     return <Loading />;
   }
