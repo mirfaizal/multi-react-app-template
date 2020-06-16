@@ -1,7 +1,12 @@
 import React from 'react';
 const CrudCourse = () => {
-
-    return (<></>);
+  return (
+    <>
+      <div>
+        <p>Admin - Courses</p>
+      </div>
+    </>
+  );
 };
 
 export default CrudCourse;

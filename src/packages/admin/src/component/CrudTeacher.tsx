@@ -1,6 +1,12 @@
 import React from 'react';
 const CrudTeacher = () => {
-    return (<></>);
+  return (
+    <>
+      <div>
+        <p>Admin - Teacher</p>
+      </div>
+    </>
+  );
 };
 
 export default CrudTeacher;

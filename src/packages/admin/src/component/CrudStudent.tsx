@@ -1,7 +1,12 @@
 import React from 'react';
-const CrudTeacher = () => {
-
-    return (<>I am teacher</>);
+const CrudStudent = () => {
+  return (
+    <>
+      <div>
+        <p>Admin - Student</p>
+      </div>
+    </>
+  );
 };
 
-export default CrudTeacher;
+export default CrudStudent;

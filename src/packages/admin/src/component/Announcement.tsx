@@ -1,7 +1,12 @@
 import React from 'react';
 const Announcement = () => {
-
-    return (<><div><p>Announcement</p></div></>);
+  return (
+    <>
+      <div>
+        <p>Admin - Announcement</p>
+      </div>
+    </>
+  );
 };
 
 export default Announcement;

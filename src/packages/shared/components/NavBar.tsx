@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink as RouterNavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -19,12 +19,42 @@ import {
 } from 'reactstrap';
 
 import { useAuth0 } from '../../../react-auth0-spa';
+import { INavBarProps, INavMenu } from '../types/Common';
 
-const NavBar = () => {
+export interface INavBarObjProp extends INavBarProps {
+  isAuthenticated: boolean;
+}
+
+const NavBarObj: React.FC<INavBarObjProp> = ({ isAuthenticated, navMenu }: any) => {
+  let navItems: any = [];
+  if (!isAuthenticated) {
+    return <></>;
+  }
+  navMenu.forEach((item: INavMenu) => {
+    const navItem = (
+      <NavItem key={item.uniqueId}>
+        <NavLink tag={RouterNavLink} to={item.url} exact activeClassName='router-link-exact-active'>
+          {item.label}
+        </NavLink>
+      </NavItem>
+    );
+    if (item.level !== 1) {
+      navItems.push(navItem);
+    }
+  });
+  return (
+    <>
+      <Nav className='mr-auto' navbar>
+        {navItems}
+      </Nav>
+    </>
+  );
+};
+
+const NavBar: React.FC<INavBarProps> = (props: INavBarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
-
   const logoutWithRedirect = () =>
     logout({
       returnTo: window.location.origin,
@@ -37,30 +67,7 @@ const NavBar = () => {
           <NavbarBrand className='logo' />
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
-            {isAuthenticated && (
-              <Nav className='mr-auto' navbar>
-                <NavItem>
-                  <NavLink tag={RouterNavLink} to='/' exact activeClassName='router-link-exact-active'>
-                    Home
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RouterNavLink} to='/student' exact activeClassName='router-link-exact-active'>
-                    Student
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RouterNavLink} to='/teacher' exact activeClassName='router-link-exact-active'>
-                    Teacher
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RouterNavLink} to='/admin' exact activeClassName='router-link-exact-active'>
-                    Admin
-                  </NavLink>
-                </NavItem>
-              </Nav>
-            )}
+            {isAuthenticated && <NavBarObj navMenu={props.navMenu} isAuthenticated={isAuthenticated} />}
             <Nav className='d-none d-md-block' navbar>
               {!isAuthenticated && (
                 <NavItem>
