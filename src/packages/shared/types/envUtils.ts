@@ -13,7 +13,7 @@ export const getEnvironment = () => {
 export const isProd = () => getEnvironment() === Environment.PROD;
 export const isDev = () => getEnvironment() === Environment.DEV;
 
-export const getEnvVariable = (key: string) => {
+export const getEnvVariable = (key: any) => {
   const variablesMap = ENVIRONMENT_VARIABLES[key];
 
   switch (getEnvironment()) {

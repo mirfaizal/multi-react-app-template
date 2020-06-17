@@ -14,7 +14,6 @@ import Footer from '../../landing/src/Footer';
 import AdminLanding from './component/AdminLanding';
 import Profile from '../../shared/views/Profile';
 import { getNavMenu } from '../../shared/utils';
-const config = require('../../../auth_config.json');
 
 const App = () => {
   const { user, loading, isAuthenticated } = useAuth0();

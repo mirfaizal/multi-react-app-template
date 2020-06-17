@@ -4,9 +4,9 @@ import App from './App';
 import * as serviceWorker from '../../../serviceWorker';
 import { Auth0Provider } from '../../../react-auth0-spa';
 import history from '../../shared/utils/history';
-const config = require('../../../auth_config.json');
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
+import { getEnvVariable } from '../../shared/types/envUtils';
 
 const onRedirectCallback = (appState?: any) => {
   history.push(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
@@ -14,8 +14,8 @@ const onRedirectCallback = (appState?: any) => {
 
 ReactDOM.render(
   <Auth0Provider
-    domain={config.domain}
-    client_id={config.clientId}
+    domain={getEnvVariable('auth0Domain')}
+    client_id={getEnvVariable('auth0ClientId')}
     redirect_uri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
   >

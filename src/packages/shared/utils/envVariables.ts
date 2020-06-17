@@ -1,7 +1,6 @@
 import { IEnvironmentConfig } from '../types/IEnvironmentConfig';
 
-const ENVIRONMENT_VARIABLES: IEnvironmentConfig = {
-  
+const ENVIRONMENT_VARIABLES: IEnvironmentConfig | any = {
   auth0Domain: {
     dev: `dev-remoteeducation.us.auth0.com`,
     prod: `dev-remoteeducation.us.auth0.com`,

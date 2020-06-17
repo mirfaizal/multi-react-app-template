@@ -1,4 +1,4 @@
-const config = require('../../../auth_config.json');
+import { getEnvVariable } from '../../shared/types/envUtils';
 
 export function getNavMenu(user: any, authenticated: boolean) {
   var adminNavMenus = [
@@ -18,7 +18,7 @@ export function getNavMenu(user: any, authenticated: boolean) {
   ];
   let navMenu: any = [];
   if (authenticated) {
-    const roles = user[config.roleURL];
+    const roles = user[getEnvVariable('roleURL')];
     const isAdmin: boolean = roles.indexOf('admin') === 0;
     // let isStudent: boolean = roles.indexOf('student') === 0;
     // let isTeacher: boolean = roles.indexOf('teacher') === 0;
