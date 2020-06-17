@@ -52,7 +52,7 @@ const NavBarObj: React.FC<INavBarObjProp> = ({ isAuthenticated, navMenu }: any) 
 
 const NavBar: React.FC<INavBarProps> = (props: INavBarProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { user, isAuthenticated, logout } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
   const logoutWithRedirect = () =>
     logout({
