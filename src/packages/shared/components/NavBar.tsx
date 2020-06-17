@@ -11,7 +11,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Button,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -82,6 +81,7 @@ const NavBar: React.FC<INavBarProps> = (props: INavBarProps) => {
                 </UncontrolledDropdown>
               )}
             </Nav>
+
             {isAuthenticated && (
               <Nav className='d-md-none justify-content-between' navbar style={{ minHeight: 170 }}>
                 <NavItem>

@@ -6,6 +6,7 @@ import { Auth0Provider } from '../../../react-auth0-spa';
 import history from '../../shared/utils/history';
 const config = require('../../../auth_config.json');
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.scss';
 
 const onRedirectCallback = (appState?: any) => {
   history.push(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);

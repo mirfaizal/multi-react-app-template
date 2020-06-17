@@ -4,7 +4,6 @@ import Content from '../../../shared/components/Content';
 const AdminLanding = () => {
   return (
     <>
-      <Welcome />
       <Content />
     </>
   );
