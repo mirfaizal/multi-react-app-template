@@ -1,9 +1,10 @@
 import React from 'react';
-import Welcome from '../../../shared/components/Welcome';
 import Content from '../../../shared/components/Content';
+import Profile from '../../../shared/components/Profile';
 const AdminLanding = () => {
   return (
     <>
+      <Profile />
       <Content />
     </>
   );

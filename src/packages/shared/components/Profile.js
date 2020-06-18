@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 
-import Loading from "../components/Loading";
+import Loading from "./Loading";
 import { useAuth0 } from "../../../react-auth0-spa";
 
 const Profile = () => {

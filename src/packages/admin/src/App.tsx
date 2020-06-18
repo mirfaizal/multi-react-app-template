@@ -12,7 +12,7 @@ import { Redirect } from 'react-router-dom';
 import NavBar from '../../shared/components/NavBar';
 import Footer from '../../landing/src/Footer';
 import AdminLanding from './component/AdminLanding';
-import Profile from '../../shared/views/Profile';
+import Profile from '../../shared/components/Profile';
 import { getNavMenu } from '../../shared/utils';
 
 const App = () => {
