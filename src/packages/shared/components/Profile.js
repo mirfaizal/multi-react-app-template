@@ -17,7 +17,8 @@ const Profile = () => {
           <img
             src={user.picture}
             alt="Profile"
-            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
+            className="rounded-circle img-fluid profile-picture"
+            width='70'
           />
         </Col>
         <Col md>
