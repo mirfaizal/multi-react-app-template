@@ -9,16 +9,20 @@ import PublicHome from '../../shared/components/PublicHome';
 import Student from '../../student/src/App';
 import Teacher from '../../teacher/src/App';
 import { withRouter, Redirect } from 'react-router';
+import { isAdmin, isStudent } from '../../shared/utils';
+import PageNotFound from '../../shared/components/PageNotFound';
 
 const App = () => {
   const { loading, isAuthenticated, user } = useAuth0();
+
   if (loading) {
     return <Loading />;
   }
   return (
     <Router history={history}>
       {!isAuthenticated && <Redirect to='/' />}
-      {isAuthenticated && <Redirect to='/admin' />}
+      {isAdmin(user, isAuthenticated) && <Redirect to='/admin' />}
+      {isStudent(user, isAuthenticated) && <Redirect to='/student' />}
       <Container className='flex-grow-1 mt-5'>
         <Switch>
           <Route exact path={'/'} component={PublicHome} />

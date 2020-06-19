@@ -37,9 +37,9 @@ const NavBarObj: React.FC<INavBarObjProp> = ({ isAuthenticated, navMenu }: any) 
         </NavLink>
       </NavItem>
     );
-    if (item.level !== 1) {
+    // if (item.level !== 1) {
       navItems.push(navItem);
-    }
+    // }
   });
   return (
     <>
