@@ -10,7 +10,7 @@ import Student from '../../student/src/App';
 import Teacher from '../../teacher/src/App';
 import { withRouter, Redirect } from 'react-router';
 import { isAdmin, isStudent } from '../../shared/utils';
-import PageNotFound from '../../shared/components/PageNotFound';
+import GlobalState from './context/GlobalState';
 
 const App = () => {
   const { loading, isAuthenticated, user } = useAuth0();
@@ -20,6 +20,7 @@ const App = () => {
   }
   return (
     <Router history={history}>
+      <GlobalState>
       {!isAuthenticated && <Redirect to='/' />}
       {isAdmin(user, isAuthenticated) && <Redirect to='/admin' />}
       {isStudent(user, isAuthenticated) && <Redirect to='/student' />}
@@ -35,7 +36,9 @@ const App = () => {
           )}
         </Switch>
       </Container>
+      </GlobalState>
     </Router>
+    
   );
 };
 

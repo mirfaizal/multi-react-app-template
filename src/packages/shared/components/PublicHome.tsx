@@ -1,10 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Welcome from './Welcome';
 import Footer from '../../landing/src/Footer';
-import { Collapse, Container, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Button } from 'reactstrap';
+import { Collapse, Container, Navbar, NavbarToggler,  Nav, NavItem, Button } from 'reactstrap';
 import { useAuth0 } from '../../../react-auth0-spa';
+import { GlobalContext } from '../../landing/src/context/GlobalContext';
 
-const PublicNavBar = () => {
+const PublicNavBar = ({context}: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     console.log('Inside Toggle', isOpen);
@@ -13,38 +14,61 @@ const PublicNavBar = () => {
   const { loginWithRedirect } = useAuth0();
   return (
     <div className='nav-container'>
-      <Navbar color='light' light expand='md'>
-        <Container>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className='d-none d-md-block' navbar>
-              <NavItem>
-                <Button id='qsLoginBtn' color='primary' className='btn-margin' onClick={() => loginWithRedirect({})}>
-                  Log in
-                </Button>
-              </NavItem>
-            </Nav>
-            <Nav className='d-md-none' navbar>
-              <NavItem>
-                <Button id='qsLoginBtn' color='primary' block onClick={() => loginWithRedirect({})}>
-                  Log in
-                </Button>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Container>
-      </Navbar>
+          <Navbar color='light' light expand='md'>
+            <Container>
+              <NavbarToggler onClick={toggle} />
+              <Collapse isOpen={isOpen} navbar>
+                <Nav className='d-none d-md-block' navbar>
+                  <NavItem>
+                    <Button
+                      id='qsLoginBtn'
+                      color='primary'
+                      className='btn-margin'
+                      onClick={() => context.useLogin() & loginWithRedirect({})}
+                    >
+                      Log in
+                    </Button>
+                  </NavItem>
+                </Nav>
+                <Nav className='d-md-none' navbar>
+                  <NavItem>
+                    <Button
+                      id='qsLoginBtn'
+                      color='primary'
+                      block
+                      onClick={() => context.useLogin() & loginWithRedirect({})}
+                    >
+                      Log in
+                    </Button>
+                  </NavItem>
+                </Nav>
+              </Collapse>
+            </Container>
+          </Navbar>
     </div>
   );
 };
 
+const CovidInfo = ({context}:any) => {
+  useEffect(() => {
+    console.log("use effect covid");
+    context.getCovidInfo();
+  }, []);
+  return <></>;
+};
+
 const PublicHome = () => {
   return (
-    <Fragment>
-      <PublicNavBar />
-      <Welcome />
-      <Footer />
-    </Fragment>
+    <GlobalContext.Consumer>
+      {(context: any) => (
+        <Fragment>
+          <CovidInfo context={context}/>
+          <PublicNavBar context={context}/>
+          <Welcome />
+          <Footer />
+        </Fragment>
+      )}
+    </GlobalContext.Consumer>
   );
 };
 
