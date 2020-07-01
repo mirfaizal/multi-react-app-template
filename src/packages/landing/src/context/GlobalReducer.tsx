@@ -32,6 +32,7 @@ const useLogout = (state: any) => {
 
 const getCovidInfo = (state: any) => {
   console.log("Getting COVID information");
+  
 };
 
 
