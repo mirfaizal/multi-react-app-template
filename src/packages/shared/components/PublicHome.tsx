@@ -4,6 +4,7 @@ import Footer from '../../landing/src/Footer';
 import { Collapse, Container, Navbar, NavbarToggler,  Nav, NavItem, Button } from 'reactstrap';
 import { useAuth0 } from '../../../react-auth0-spa';
 import { GlobalContext } from '../../landing/src/context/GlobalContext';
+import CovidInfo from './CovidInfo';
 
 const PublicNavBar = ({context}: any) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,22 +50,16 @@ const PublicNavBar = ({context}: any) => {
   );
 };
 
-const CovidInfo = ({context}:any) => {
-  useEffect(() => {
-    console.log("use effect covid");
-    context.getCovidInfo();
-  }, []);
-  return <></>;
-};
+
 
 const PublicHome = () => {
   return (
     <GlobalContext.Consumer>
       {(context: any) => (
         <Fragment>
-          <CovidInfo context={context}/>
           <PublicNavBar context={context}/>
           <Welcome />
+          <CovidInfo context={context}/>
           <Footer />
         </Fragment>
       )}

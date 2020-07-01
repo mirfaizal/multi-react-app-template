@@ -37,7 +37,7 @@ const courseData = [
     },
     {
         courseId: 5,
-        courseName: "3nd Grade",
+        courseName: "3rd Grade",
         courseDesc: "Learn third grade math—fractions, area, arithmetic, and so much more. This course is aligned with Common Core standards.",
         courseLink: "",
         courseCreatedDate: "02/04/2020",

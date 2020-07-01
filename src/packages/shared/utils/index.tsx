@@ -35,7 +35,7 @@ export function getNavMenu(user: any, authenticated: boolean) {
     {
       description: 'Only for Administrator use',
       url: '/student/course',
-      label: 'Cource',
+      label: 'Course',
       level: 1,
       uniqueId: 3,
     },
